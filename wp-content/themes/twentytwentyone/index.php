@@ -23,6 +23,7 @@ get_header(); ?>
 <?php endif; ?>
 
 <?php
+rest_api();
 if ( have_posts() ) {
 
 	// Load posts loop.
