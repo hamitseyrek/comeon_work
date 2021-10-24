@@ -37,7 +37,6 @@ function campaign_custom_post() {
 
 			'supports' => array(
 				'title',
-				'editor',
 				'thumbnail',
 			),
 
@@ -50,10 +49,14 @@ function campaign_custom_post() {
 // Hooking up our function to theme setup
 add_action( 'init', 'campaign_custom_post' );
 
-include 'include/field_for_segment.php';
-include 'include/field_for_button.php';
+//include 'include/field_for_segment.php';
+//include 'include/field_for_button.php';
 include 'include/remove_media_button.php';
-include 'include/field_for_disclaimer.php';
+include 'include/field_for_lv.php';
+include 'include/field_for_mv.php';
+include 'include/field_for_hv.php';
+include 'include/field_for_vip.php';
+//include 'include/field_for_disclaimer.php';
 
 
 
