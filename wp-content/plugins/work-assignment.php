@@ -15,8 +15,8 @@ function remove_menus() {
 	remove_menu_page( 'edit-comments.php' );
 	remove_menu_page( 'upload.php' );
 	remove_menu_page( 'upload.php' );
-	remove_submenu_page('plugins.php','plugin-editor.php');
-	remove_submenu_page('plugins.php','plugin-install.php');
+	remove_submenu_page( 'plugins.php', 'plugin-editor.php' );
+	remove_submenu_page( 'plugins.php', 'plugin-install.php' );
 }
 
 add_action( 'admin_menu', 'remove_menus' );
@@ -36,9 +36,8 @@ function admin_default_page() {
 
 add_filter( 'login_redirect', 'admin_default_page' );
 
-function rest_api() {
-	$current_user = wp_get_current_user();
-	$url = 'https://promocje.pzbuk.pl/comeon-work-assignment/';
+function getSegment() {
+	$url   = 'https://promocje.pzbuk.pl/comeon-work-assignment/';
 	$email = wp_get_current_user()->user_email;
 	//wp_remote_post( $url, $data );
 	$response = wp_remote_post( $url, array(
@@ -56,10 +55,14 @@ function rest_api() {
 	);
 
 	if ( is_wp_error( $response ) ) {
-		$error_message = $response->get_error_message();
-		echo "Something went wrong: $error_message";
+		//$error_message = $response->get_error_message();
+		//echo "Something went wrong: $error_message";
+		return '';
 	} else {
-		print_r( json_decode( $response['body'] )->result->value );
-		echo '</pre>';
+		//print_r( json_decode( $response['body'] )->result->value );
+		//echo '</pre>';
+		return json_decode( $response['body'] )->result->value;
 	}
 }
+
+

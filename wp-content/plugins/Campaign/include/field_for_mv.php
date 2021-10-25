@@ -18,38 +18,65 @@ function mv_segment_meta_box_callback( $post ) {
 	// Add a nonce field so we can check for it later.
 	wp_nonce_field( 'mv_segment_nonce', 'mv_segment_nonce' );
 
-	$header      = json_decode( get_post_meta( $post->ID, 'mv', true ) )->header;
-	$description = json_decode( get_post_meta( $post->ID, 'mv', true ) )->description;
-	$button_text = json_decode( get_post_meta( $post->ID, 'mv', true ) )->button_text;
-	$button_link = json_decode( get_post_meta( $post->ID, 'mv', true ) )->button_link;
-	$disclaimer  = json_decode( get_post_meta( $post->ID, 'mv', true ) )->disclaimer;
+	$header       = json_decode( get_post_meta( $post->ID, 'mv', true ) )->header;
+	$description  = json_decode( get_post_meta( $post->ID, 'mv', true ) )->description;
+	$button_text  = json_decode( get_post_meta( $post->ID, 'mv', true ) )->button_text;
+	$button_link  = json_decode( get_post_meta( $post->ID, 'mv', true ) )->button_link;
+	$disclaimer   = json_decode( get_post_meta( $post->ID, 'mv', true ) )->disclaimer;
+	$upload_image = json_decode( get_post_meta( $post->ID, 'mv', true ) )->upload_image;
 
-	echo '<p>';
-	echo '
+	echo '<div class="container">
+    <div class="row">
+      <div class="col-25">
+        <label>' . __( 'Header' ) . '</label>
+      </div>
+      <div class="col-75">
+        <input type="text" name="header_mv" value="' . esc_attr( $header ) . '" >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <th><label>' . __( 'Description' ) . '</label></th>
+      </div>
+      <div class="col-75">
+        <textarea name="description_mv">' . esc_attr( $description ) . '</textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <th><label>' . __( 'Button Text' ) . '</label></th>
+      </div>
+      <div class="col-75">
+        <input type="text" name="button_text_mv" value="' . esc_attr( $button_text ) . '">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label>' . __( 'Button Link' ) . '</label>
+      </div>
+      <div class="col-75">
+         <input type="text" name="button_link_mv" value="' . esc_attr( $button_link ) . '">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label>' . __( 'Disclaimer' ) . '</label>
+      </div>
+      <div class="col-75">
+         <textarea name="disclaimer_mv">' . esc_attr( $disclaimer ) . '</textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label>' . __( 'Background Image' ) . '</label>
+      </div>
+      <div class="col-75">
+         <input id="upload_image_mv" type="text" name="upload_image_mv" value="' . esc_attr( $upload_image ) . '"/>
+                    <input id="upload_image_button3" type="button" value="Upload" />
+      </div>
+    </div>
+</div>';
 
-                Header Text
-                <input type="text" name="header_mv" value="' . esc_attr( $header ) . '"  size="60" placeholder=""> <br />';
-	echo '</p>';
-	echo '<p>';
-	echo '
-	Description
-                <input type="text" name="description_mv" value="' . esc_attr( $description ) . '"  size="60" placeholder=""><br />';
-	echo '</p>';
-	echo '<p>';
-	echo '
-                Button Text
-                <input type="text" name="button_text_mv" value="' . esc_attr( $button_text ) . '"  size="60" placeholder=""><br />';
-	echo '</p>';
-	echo '<p>';
-	echo '
-                Button Link
-                <input type="text" name="button_link_mv" value="' . esc_attr( $button_link ) . '"  size="60" placeholder=""><br />';
-	echo '</p>';
-	echo '<p>';
-	echo '
-                Disclaimer
-                <input type="text" name="disclaimer_mv" value="' . esc_attr( $disclaimer ) . '"  size="60" placeholder=""><br />';
-	echo '</p>';
 
 }
 
@@ -81,13 +108,14 @@ function save_mv_segment_meta_box_data( $post_id ) {
 
 
 	// Sanitize user input.
-	$keys   = array( 'header', 'description', 'button_text', 'button_link', 'disclaimer' );
+	$keys   = array( 'header', 'description', 'button_text', 'button_link', 'disclaimer', 'upload_image_mv' );
 	$values = array(
 		sanitize_text_field( $_POST['header_mv'] ),
 		sanitize_text_field( $_POST['description_mv'] ),
 		sanitize_text_field( $_POST['button_text_mv'] ),
 		sanitize_text_field( $_POST['button_link_mv'] ),
-		sanitize_text_field( $_POST['disclaimer_mv'] )
+		sanitize_text_field( $_POST['disclaimer_mv'] ),
+		sanitize_text_field( $_POST['upload_image_mv'] ),
 	);
 	$data   = array();
 	for ( $i = 0; $i < 5; $i ++ ) {

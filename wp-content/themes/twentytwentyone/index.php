@@ -1,4 +1,7 @@
 <?php
+echo do_shortcode( '[my_campaign]' );
+?>
+<?php
 /**
  * The main template file
  *
@@ -14,34 +17,42 @@
  * @since Twenty Twenty-One 1.0
  */
 
-get_header(); ?>
+get_header();
 
-<?php if ( is_home() && ! is_front_page() && ! empty( single_post_title( '', false ) ) ) : ?>
-	<header class="page-header alignwide">
-		<h1 class="page-title"><?php single_post_title(); ?></h1>
-	</header><!-- .page-header -->
-<?php endif; ?>
+?>
 
-<?php
-// hmtsyrk
-rest_api();
-if ( have_posts() ) {
+<script>
+    jQuery(document).ready(function() {
 
-	// Load posts loop.
-	while ( have_posts() ) {
-		the_post();
+        var formfield;
 
-		get_template_part( 'template-parts/content/content', get_theme_mod( 'display_excerpt_or_full_post', 'excerpt' ) );
-	}
+        jQuery('#Image_button').click(function() {
+            jQuery('html').addClass('Image');
+            formfield = jQuery('#Image').attr('name');
+            tb_show('', 'media-upload.php?type=image&TB_iframe=true');
+            return false;
+        });
 
-	// Previous/next page navigation.
-	twenty_twenty_one_the_posts_navigation();
+// user inserts file into post. only run custom if user started process using the above process
+// window.send_to_editor(html) is how wp would normally handle the received data
 
-} else {
+        window.original_send_to_editor = window.send_to_editor;
+        window.send_to_editor = function(html){
 
-	// If no content, include the "No posts found" template.
-	get_template_part( 'template-parts/content/content-none' );
+            if (formfield) {
+                fileurl = jQuery('img',html).attr('src');
 
-}
+                jQuery('#Image').val(fileurl);
 
-get_footer();
+                tb_remove();
+
+                jQuery('html').removeClass('Image');
+
+            } else {
+                window.original_send_to_editor(html);
+            }
+        };
+
+    });
+</script>
+

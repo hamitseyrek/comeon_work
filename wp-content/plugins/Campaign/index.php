@@ -1,3 +1,4 @@
+
 <?php
 /*
  * Plugin Name: Campaign Post
@@ -30,14 +31,13 @@ function campaign_custom_post() {
 				'remove_featured_image' => __( 'Remove background image' ),
 				'set_featured_image'    => __( 'Select background' ),
 			),
-
+			'description' => 'For creating Campaign page',
 			'has_archive'  => true,
 			'public'       => true,
 			'hierarchical' => false,
 
 			'supports' => array(
 				'title',
-				'thumbnail',
 			),
 
 			'rewrite' => array( 'slug' => 'campaigns' ),
@@ -51,11 +51,13 @@ add_action( 'init', 'campaign_custom_post' );
 
 //include 'include/field_for_segment.php';
 //include 'include/field_for_button.php';
-include 'include/remove_media_button.php';
+//include 'include/remove_media_button.php';
 include 'include/field_for_lv.php';
 include 'include/field_for_mv.php';
 include 'include/field_for_hv.php';
+include 'custom_meta_box.php';
 include 'include/field_for_vip.php';
+include 'popup_campaign.php';
 //include 'include/field_for_disclaimer.php';
 
 

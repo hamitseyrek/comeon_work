@@ -23,33 +23,59 @@ function vip_segment_meta_box_callback( $post ) {
 	$button_text = json_decode( get_post_meta( $post->ID, 'vip', true ) )->button_text;
 	$button_link = json_decode( get_post_meta( $post->ID, 'vip', true ) )->button_link;
 	$disclaimer  = json_decode( get_post_meta( $post->ID, 'vip', true ) )->disclaimer;
+	$upload_image = json_decode( get_post_meta( $post->ID, 'vip', true ) )->upload_image;
 
-	echo '<p>';
-	echo '
-
-                Header Text
-                <input type="text" name="header_vip" value="' . esc_attr( $header ) . '"  size="60" placeholder=""> <br />';
-	echo '</p>';
-	echo '<p>';
-	echo '
-	Description
-                <input type="text" name="description_vip" value="' . esc_attr( $description ) . '"  size="60" placeholder=""><br />';
-	echo '</p>';
-	echo '<p>';
-	echo '
-                Button Text
-                <input type="text" name="button_text_vip" value="' . esc_attr( $button_text ) . '"  size="60" placeholder=""><br />';
-	echo '</p>';
-	echo '<p>';
-	echo '
-                Button Link
-                <input type="text" name="button_link_vip" value="' . esc_attr( $button_link ) . '"  size="60" placeholder=""><br />';
-	echo '</p>';
-	echo '<p>';
-	echo '
-                Disclaimer
-                <input type="text" name="disclaimer_vip" value="' . esc_attr( $disclaimer ) . '"  size="60" placeholder=""><br />';
-	echo '</p>';
+	echo '<div class="container">
+    <div class="row">
+      <div class="col-25">
+        <label>' . __( 'Header' ) . '</label>
+      </div>
+      <div class="col-75">
+        <input type="text" name="header_vip" value="' . esc_attr( $header ) . '" >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <th><label>' . __( 'Description' ) . '</label></th>
+      </div>
+      <div class="col-75">
+        <textarea name="description_vip">' . esc_attr( $description ) . '</textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <th><label>' . __( 'Button Text' ) . '</label></th>
+      </div>
+      <div class="col-75">
+        <input type="text" name="button_text_vip" value="' . esc_attr( $button_text ) . '">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label>' . __( 'Button Link' ) . '</label>
+      </div>
+      <div class="col-75">
+         <input type="text" name="button_link_vip" value="' . esc_attr( $button_link ) . '">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label>' . __( 'Disclaimer' ) . '</label>
+      </div>
+      <div class="col-75">
+         <textarea name="disclaimer_vip">' . esc_attr( $disclaimer ) . '</textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label>' . __( 'Background Image' ) . '</label>
+      </div>
+      <div class="col-75">
+         <input id="upload_image_vip" type="text" name="upload_image_vip" value="' . esc_attr( $upload_image ) . '"/>
+                    <input id="upload_image_button4" type="button" value="Upload" />
+      </div>
+    </div>
+</div>';
 
 }
 
@@ -92,13 +118,14 @@ function save_vip_segment_meta_box_data( $post_id ) {
 	}
 
 	// Sanitize user input.
-	$keys   = array( 'header', 'description', 'button_text', 'button_link', 'disclaimer' );
+	$keys   = array( 'header', 'description', 'button_text', 'button_link', 'disclaimer', 'upload_image_vip' );
 	$values = array(
 		sanitize_text_field( $_POST['header_vip'] ),
 		sanitize_text_field( $_POST['description_vip'] ),
 		sanitize_text_field( $_POST['button_text_vip'] ),
 		sanitize_text_field( $_POST['button_link_vip'] ),
-		sanitize_text_field( $_POST['disclaimer_vip'] )
+		sanitize_text_field( $_POST['disclaimer_vip'] ),
+		sanitize_text_field( $_POST['upload_image_vip'] )
 	);
 	$data   = array();
 	for ( $i = 0; $i < 5; $i ++ ) {
@@ -108,6 +135,7 @@ function save_vip_segment_meta_box_data( $post_id ) {
 	// Update the meta field in the database.
 	update_post_meta( $post_id, 'vip', json_encode( $data ) );
 }
+
 add_action( 'save_post', 'save_vip_segment_meta_box_data' );
 
 function vip_segment_before_post( $content ) {
