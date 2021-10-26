@@ -70,13 +70,18 @@ function vip_segment_meta_box_callback( $post ) {
       <div class="col-25">
         <label>' . __( 'Background Image' ) . '</label>
       </div>
-      <div class="col-75">
-         <input id="upload_image_vip" type="text" name="upload_image_vip" value="' . esc_attr( $upload_image ) . '"/>
-                    <input id="upload_image_button4" type="button" value="Upload" />
-      </div>
+      <div class="col-75">';
+	if ( $upload_image != null ) {
+		echo '<input id="upload_image_vip" type="text" name="upload_image_vip" value="' . esc_attr( $upload_image ) . '"/>';
+		echo '<a href="#" class="hase-upl" ><img width="150" src="' . $upload_image . '"  /></a>
+	      <a href="#" class="hase-rmv">Remove image</a>';
+	} else {
+		echo '<a href="#" class="hase-upl" data-segment="vip">Upload image</a>';
+		echo '<input id="upload_image_vip" type="text" name="upload_image_vip"/>';
+	}
+	echo '</div>
     </div>
 </div>';
-
 }
 
 function save_vip_segment_meta_box_data( $post_id ) {
@@ -118,7 +123,7 @@ function save_vip_segment_meta_box_data( $post_id ) {
 	}
 
 	// Sanitize user input.
-	$keys   = array( 'header', 'description', 'button_text', 'button_link', 'disclaimer', 'upload_image_vip' );
+	$keys   = array( 'header', 'description', 'button_text', 'button_link', 'disclaimer', 'upload_image' );
 	$values = array(
 		sanitize_text_field( $_POST['header_vip'] ),
 		sanitize_text_field( $_POST['description_vip'] ),

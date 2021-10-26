@@ -70,12 +70,12 @@ function lv_segment_meta_box_callback( $post ) {
       </div>
       <div class="col-75">';
 	if ( $upload_image != null ) {
-		echo '<input id="upload_image" type="text" name="upload_image" value="' . esc_attr( $upload_image ) . '"/>';
+		echo '<input id="upload_image_lv" type="text" name="upload_image_lv" value="' . esc_attr( $upload_image ) . '"/>';
 		echo '<a href="#" class="hase-upl" ><img width="150" src="' . $upload_image . '"  /></a>
 	      <a href="#" class="hase-rmv">Remove image</a>';
 	} else {
-		echo '<a href="#" class="hase-upl">Upload image</a>';
-		echo '<input id="upload_image" type="text" name="upload_image"/>';
+		echo '<a href="#" class="hase-upl" data-segment="lv">Upload image</a>';
+		echo '<input id="upload_image_lv" type="text" name="upload_image_lv"/>';
 	}
 	echo '</div>
     </div>
@@ -128,7 +128,7 @@ function save_lv_segment_meta_box_data( $post_id ) {
 		sanitize_text_field( $_POST['button_text_lv'] ),
 		sanitize_text_field( $_POST['button_link'] ),
 		sanitize_text_field( $_POST['disclaimer_lv'] ),
-		sanitize_text_field( $_POST['upload_image'] ),
+		sanitize_text_field( $_POST['upload_image_lv'] ),
 	);
 	$data   = array();
 	for ( $i = 0; $i < 6; $i ++ ) {
