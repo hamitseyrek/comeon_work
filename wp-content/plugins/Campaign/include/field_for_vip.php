@@ -133,7 +133,7 @@ function save_vip_segment_meta_box_data( $post_id ) {
 		sanitize_text_field( $_POST['upload_image_vip'] )
 	);
 	$data   = array();
-	for ( $i = 0; $i < 5; $i ++ ) {
+	for ( $i = 0; $i < 6; $i ++ ) {
 		$data[ $keys[ $i ] ] = $values[ $i ];
 	}
 
