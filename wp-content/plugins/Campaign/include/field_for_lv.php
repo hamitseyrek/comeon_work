@@ -68,22 +68,18 @@ function lv_segment_meta_box_callback( $post ) {
       <div class="col-25">
         <label>' . __( 'Background Image' ) . '</label>
       </div>
-      <div class="col-75">
-         <input id="upload_image" type="text" name="upload_image" value="' . esc_attr( $upload_image ) . '"/>
-                    <input id="aw_upload_image_button" type="button" value="Upload" />    
-      </div>
+      <div class="col-75">';
+	if ( $upload_image != null ) {
+		echo '<input id="upload_image" type="text" name="upload_image" value="' . esc_attr( $upload_image ) . '"/>';
+		echo '<a href="#" class="hase-upl" ><img width="150" src="' . $upload_image . '"  /></a>
+	      <a href="#" class="hase-rmv">Remove image</a>';
+	} else {
+		echo '<a href="#" class="hase-upl">Upload image</a>';
+		echo '<input id="upload_image" type="text" name="upload_image"/>';
+	}
+	echo '</div>
     </div>
 </div>';
-	if( !wp_get_attachment_image_src( $upload_image ) ) {
-		echo '<a href="#" class="misha-upl" ><img width="100px" style="width: 100px" src="' . $image . '"  /></a>
-	      <a href="#" class="misha-rmv">Remove image</a>
-	      <input type="hidden" name="misha-img" value="' . $upload_image . '">';
-	} else {
-		echo '<a href="#" class="misha-upl">Upload image</a>
-	      <a href="#" class="misha-rmv" style="display:none">Remove image</a>
-	      <input type="hidden" name="misha-img" value="">';
-
-	}
 }
 
 function save_lv_segment_meta_box_data( $post_id ) {

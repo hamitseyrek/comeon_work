@@ -1,7 +1,7 @@
 jQuery(function($){
 
     // on upload button click
-    $('body').on( 'click', '.misha-upl', function(e){
+    $('body').on( 'click', '.hase-upl', function(e){
 
         e.preventDefault();
 
@@ -18,19 +18,22 @@ jQuery(function($){
                 multiple: false
             }).on('select', function() { // it also has "open" and "close" events
                 var attachment = custom_uploader.state().get('selection').first().toJSON();
-                button.html('<img src="' + attachment.url + '">').next().val(attachment.id).next().show();
-            }).open();
 
+                button.html('<img width="150" src="' + attachment.url + '">').next().val(attachment.id).next().show();
+                console.log(attachment.url);
+                $('#upload_image').val(attachment.url);
+            }).open();
     });
 
     // on remove button click
-    $('body').on('click', '.misha-rmv', function(e){
-
+    $('body').on('click', '.hase-rmv', function(e){
+        $('#upload_image').val('');
         e.preventDefault();
 
         var button = $(this);
         button.next().val(''); // emptying the hidden field
         button.hide().prev().html('Upload image');
+
     });
 
 });
