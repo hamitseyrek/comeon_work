@@ -9,6 +9,8 @@
  * Text Domain: campaign
  */
 
+// Hooking for custom page
+add_action( 'init', 'campaign_custom_post' );
 function campaign_custom_post() {
 	register_post_type( 'campaign',
 		array(
@@ -45,37 +47,15 @@ function campaign_custom_post() {
 	);
 }
 
-
+// for jquery library
+add_action( 'get_header', 'hook_javascript' );
 function hook_javascript() {
-
 	?>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-    <script>
-        $('#but').click(function () {
-            $("#dialogForm").dialog("open");
-        });
-        $("#dialogForm").dialog({
-            modal: true,
-            autoOpen: true,
-            show: {effect: "blind", duration: 800}
-        });
-        $(window).load(function () {
-
-            $("#dialogForm").dialog({
-                modal: true,
-                autoOpen: true,
-                show: {effect: "blind", duration: 800}
-            });
-        });
-    </script>
 	<?php
-	wp_enqueue_style( 'campaign-admin-css', plugins_url( 'assets/css/campaign.css', __FILE__ ) , '' );
 }
-
-add_action( 'get_header', 'hook_javascript' );
 
 // for image upload
 add_action( 'admin_enqueue_scripts', 'include_js' );
@@ -85,6 +65,7 @@ function include_js() {
 	}
 	wp_enqueue_script( 'campaign-admin-js', WP_PLUGIN_URL.'/Campaign/assets/js/campaign.js', array( 'jquery' ) );
 }
+
 // for custommetabox style
 add_action( 'admin_enqueue_scripts', 'include_css' );
 function include_css() {
@@ -93,18 +74,12 @@ function include_css() {
 }
 
 
-// Hooking up our function to theme setup
-add_action( 'init', 'campaign_custom_post' );
-//include 'include/field_for_segment.php';
-//include 'include/field_for_button.php';
-//include 'include/remove_media_button.php';
 include 'include/field_for_lv.php';
 include 'include/field_for_mv.php';
 include 'include/field_for_hv.php';
 include 'custom_meta_box.php';
 include 'include/field_for_vip.php';
 include 'popup_campaign.php';
-//include 'include/field_for_disclaimer.php';
 
 
 

@@ -3,7 +3,7 @@ jQuery(function ($) {
     $('body').on('click', '.hase-upl', function (e) {
 
         e.preventDefault();
-console.log(125);
+
         var segment = $(this).attr('data-segment');
         var button = $(this),
             custom_uploader = wp.media({
