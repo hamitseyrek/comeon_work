@@ -61,8 +61,10 @@ function popup_campaign() {
     </div>
 */
 add_shortcode( 'my_campaign', 'popup_campaign' );
-
-
+function popup_shortcode( $name ) {
+	echo do_shortcode( '[my_campaign]' );
+}
+add_action( 'wp_head', 'popup_shortcode' );
 ?>
 
 <!--
