@@ -73,8 +73,8 @@ function vip_segment_meta_box_callback( $post ) {
       <div class="col-75">';
 	if ( $upload_image != null ) {
 		echo '<input id="upload_image_vip" type="text" name="upload_image_vip" value="' . esc_attr( $upload_image ) . '"/>';
-		echo '<a href="#" class="hase-upl" ><img width="150" src="' . $upload_image . '"  /></a>
-	      <a href="#" class="hase-rmv">Remove image</a>';
+		echo '<a href="#" class="hase-upl" data-segment="vip"><img width="150" src="' . $upload_image . '"  /></a>
+	      <a href="#" class="hase-rmv" data-segment="vip">Remove image</a>';
 	} else {
 		echo '<a href="#" class="hase-upl" data-segment="vip">Upload image</a>';
 		echo '<input id="upload_image_vip" type="text" name="upload_image_vip"/>';

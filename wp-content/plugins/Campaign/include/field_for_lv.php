@@ -71,8 +71,8 @@ function lv_segment_meta_box_callback( $post ) {
       <div class="col-75">';
 	if ( $upload_image != null ) {
 		echo '<input id="upload_image_lv" type="text" name="upload_image_lv" value="' . esc_attr( $upload_image ) . '"/>';
-		echo '<a href="#" class="hase-upl" ><img width="150" src="' . $upload_image . '"  /></a>
-	      <a href="#" class="hase-rmv">Remove image</a>';
+		echo '<a href="#" class="hase-upl" data-segment="lv"><img width="150" src="' . $upload_image . '"  /></a>
+	      <a href="#" class="hase-rmv" data-segment="lv">Remove image</a>';
 	} else {
 		echo '<a href="#" class="hase-upl" data-segment="lv">Upload image</a>';
 		echo '<input id="upload_image_lv" type="text" name="upload_image_lv"/>';

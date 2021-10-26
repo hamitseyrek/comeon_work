@@ -3,7 +3,7 @@ jQuery(function ($) {
     $('body').on('click', '.hase-upl', function (e) {
 
         e.preventDefault();
-
+console.log(125);
         var segment = $(this).attr('data-segment');
         var button = $(this),
             custom_uploader = wp.media({
@@ -33,7 +33,15 @@ jQuery(function ($) {
 
     // on remove button click
     $('body').on('click', '.hase-rmv', function (e) {
-        $('#upload_image').val('');
+        var segment = $(this).attr('data-segment');
+        if (segment == 'lv')
+            $('#upload_image_lv').val('');
+        else if (segment == 'mv')
+            $('#upload_image_mv').val('');
+        else if (segment == 'hv')
+            $('#upload_image_hv').val('');
+        else
+            $('#upload_image_vip').val('');
         e.preventDefault();
 
         var button = $(this);

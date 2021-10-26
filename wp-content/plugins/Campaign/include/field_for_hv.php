@@ -1,6 +1,5 @@
 <?php
 
-
 function hv_segment_meta_box() {
 
 	add_meta_box(
@@ -73,8 +72,8 @@ function hv_segment_meta_box_callback( $post ) {
       <div class="col-75">';
 	if ( $upload_image != null ) {
 		echo '<input id="upload_image_hv" type="text" name="upload_image_hv" value="' . esc_attr( $upload_image ) . '"/>';
-		echo '<a href="#" class="hase-upl" ><img width="150" src="' . $upload_image . '"  /></a>
-	      <a href="#" class="hase-rmv">Remove image</a>';
+		echo '<a href="#" class="hase-upl" data-segment="hv"><img width="150" src="' . $upload_image . '"  /></a>
+	      <a href="#" class="hase-rmv" data-segment="hv">Remove image</a>';
 	} else {
 		echo '<a href="#" class="hase-upl" data-segment="hv">Upload image</a>';
 		echo '<input id="upload_image_hv" type="text" name="upload_image_hv"/>';
