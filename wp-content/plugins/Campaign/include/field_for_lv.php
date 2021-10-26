@@ -1,12 +1,3 @@
-<style>
-    <?php include 'css/campaign.css'; ?>
-</style>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script>
-    <?php include 'js/campaign.js'; ?>
-</script>
 <?php
 
 function lv_segment_meta_box() {
@@ -20,19 +11,6 @@ function lv_segment_meta_box() {
 }
 
 add_action( 'add_meta_boxes', 'lv_segment_meta_box' );
-
-function my_admin_scripts() {
-	wp_enqueue_script( 'media-upload' );
-	wp_enqueue_script( 'thickbox' );
-	wp_register_script( 'my-upload', WP_PLUGIN_URL . '/campaign/include/js/campaign.js', array(
-		'jquery',
-		'media-upload',
-		'thickbox'
-	) );
-	wp_enqueue_script( 'my-upload' );
-}
-
-add_action( 'admin_print_scripts', 'my_admin_scripts' );
 
 function lv_segment_meta_box_callback( $post ) {
 
@@ -92,10 +70,20 @@ function lv_segment_meta_box_callback( $post ) {
       </div>
       <div class="col-75">
          <input id="upload_image" type="text" name="upload_image" value="' . esc_attr( $upload_image ) . '"/>
-                    <input id="upload_image_button" type="button" value="Upload" />    
+                    <input id="aw_upload_image_button" type="button" value="Upload" />    
       </div>
     </div>
 </div>';
+	if( !wp_get_attachment_image_src( $upload_image ) ) {
+		echo '<a href="#" class="misha-upl" ><img width="100px" style="width: 100px" src="' . $image . '"  /></a>
+	      <a href="#" class="misha-rmv">Remove image</a>
+	      <input type="hidden" name="misha-img" value="' . $upload_image . '">';
+	} else {
+		echo '<a href="#" class="misha-upl">Upload image</a>
+	      <a href="#" class="misha-rmv" style="display:none">Remove image</a>
+	      <input type="hidden" name="misha-img" value="">';
+
+	}
 }
 
 function save_lv_segment_meta_box_data( $post_id ) {

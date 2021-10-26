@@ -1,6 +1,4 @@
 <?php
-
-
 function mv_segment_meta_box() {
 
 	add_meta_box(

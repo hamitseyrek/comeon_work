@@ -55,39 +55,10 @@ function popup_campaign() {
 	}
 }
 
-/*
-        <div style=" background-image: url(' . esc_attr( $image ) . '); width: 100%; height: 100%">
-        ' . esc_attr( $data ) . '
-    </div>
-*/
 add_shortcode( 'my_campaign', 'popup_campaign' );
 function popup_shortcode( $name ) {
 	echo do_shortcode( '[my_campaign]' );
 }
 add_action( 'wp_head', 'popup_shortcode' );
-?>
 
-<!--
-not necessary hmtsyrk
--->
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script>
-    $('#but').click(function () {
-        $("#dialogForm").dialog("open");
-    });
-    $("#dialogForm").dialog({
-        modal: true,
-        autoOpen: true,
-        show: {effect: "blind", duration: 800}
-    });
-    $(window).load(function () {
 
-        $("#dialogForm").dialog({
-            modal: true,
-            autoOpen: true,
-            show: {effect: "blind", duration: 800}
-        });
-    });
-</script>
