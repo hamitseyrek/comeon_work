@@ -70,12 +70,12 @@ function mv_segment_meta_box_callback( $post ) {
       </div>
       <div class="col-75">';
 	if ( $upload_image != null ) {
-		echo '<input id="upload_image" type="text" name="upload_image" value="' . esc_attr( $upload_image ) . '"/>';
+		echo '<input id="upload_image_mv" type="text" name="upload_image_mv" value="' . esc_attr( $upload_image ) . '"/>';
 		echo '<a href="#" class="hase-upl" ><img width="150" src="' . $upload_image . '"  /></a>
 	      <a href="#" class="hase-rmv">Remove image</a>';
 	} else {
-		echo '<a href="#" class="hase-upl">Upload image</a>';
-		echo '<input id="upload_image" type="text" name="upload_image"/>';
+		echo '<a href="#" class="hase-upl" data-segment="mv">Upload image</a>';
+		echo '<input id="upload_image_mv" type="text" name="upload_image_mv"/>';
 	}
 	echo '</div>
     </div>
@@ -110,7 +110,7 @@ function save_mv_segment_meta_box_data( $post_id ) {
 
 
 	// Sanitize user input.
-	$keys   = array( 'header', 'description', 'button_text', 'button_link', 'disclaimer', 'upload_image_mv' );
+	$keys   = array( 'header', 'description', 'button_text', 'button_link', 'disclaimer', 'upload_image' );
 	$values = array(
 		sanitize_text_field( $_POST['header_mv'] ),
 		sanitize_text_field( $_POST['description_mv'] ),
@@ -120,7 +120,7 @@ function save_mv_segment_meta_box_data( $post_id ) {
 		sanitize_text_field( $_POST['upload_image_mv'] ),
 	);
 	$data   = array();
-	for ( $i = 0; $i < 5; $i ++ ) {
+	for ( $i = 0; $i < 6; $i ++ ) {
 		$data[ $keys[ $i ] ] = $values[ $i ];
 	}
 
