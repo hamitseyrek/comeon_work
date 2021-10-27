@@ -66,11 +66,17 @@ function include_js() {
 	wp_enqueue_script( 'campaign-admin-js', WP_PLUGIN_URL.'/Campaign/assets/js/campaign.js', array( 'jquery' ) );
 }
 
-// for custommetabox style
+// for custom_meta_box style
 add_action( 'admin_enqueue_scripts', 'include_css' );
 function include_css() {
 	wp_register_style( 'custom_wp_admin_css', WP_PLUGIN_URL.'/Campaign/assets/css/campaign.css', false );
 	wp_enqueue_style( 'custom_wp_admin_css' );
+}
+
+add_action( 'wp_enqueue_scripts', 'include_css_popup' );
+function include_css_popup() {
+	wp_register_style( 'uniquestylesheetid', WP_PLUGIN_URL.'/Campaign/assets/css/popup.css', false );
+	wp_enqueue_style( 'uniquestylesheetid' );
 }
 
 

@@ -1,0 +1,159 @@
+.d-flex {
+    display: flex !important
+}
+
+.masthead {
+    min-height: 30rem;
+    align-content: space-evenly;
+    position: relative;
+    display: table;
+    width: 100%;
+    height: auto;
+    padding-top: 2rem;
+    padding-bottom: 8rem;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.masthead h1, .masthead .h1 {
+    font-size: 4rem;
+    margin: 0;
+    padding: 0
+}
+
+@media (min-width: 992px) {
+    .masthead {
+        height: 100vh
+    }
+
+    .masthead h1, .masthead .h1 {
+        font-size: 5.5rem
+    }
+}
+@media (min-width: 768px) {
+    .d-md-flex {
+        display: flex !important
+    }
+}
+
+.container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
+    width: 100%;
+
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+
+    background-color: #FFFFFF;
+    opacity: 0.6;
+}
+
+@media (min-width: 576px) {
+    .container-sm, .container {
+        max-width: 540px
+    }
+}
+
+@media (min-width: 768px) {
+    .container-md, .container-sm, .container {
+        max-width: 720px
+    }
+}
+
+@media (min-width: 992px) {
+    .container-lg, .container-md, .container-sm, .container {
+        max-width: 960px
+    }
+}
+
+@media (min-width: 1200px) {
+    .container-xl, .container-lg, .container-md, .container-sm, .container {
+        max-width: 1140px
+    }
+}
+
+@media (min-width: 1400px) {
+    .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+        max-width: 1320px
+    }
+}
+.my-auto {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+.text-center {
+    text-align: center !important
+}
+.text-color-black {
+    color: #000000;
+}
+.text-style-mongo {
+    font-family: Mongolian Baliti;
+}
+.disclaimer {
+    color: #000000;
+    margin-top: 5px;
+    font-size: 15px;
+    background-color: #FFFFFF;
+    opacity: 0.6;
+    bottom:10px;
+    width: 100%;
+    position: absolute;
+    font-family: Times New Roman;
+}
+.img {
+    width: 175px;
+}
+.mb-5 {
+    margin-bottom: 3rem !important
+}
+.mb-4 {
+    margin-bottom: 1rem !important
+}
+.mb-1 {
+    margin-bottom: .25rem !important
+}
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}
+@media (prefers-reduced-motion: reduce) {
+    .btn {
+        transition: none
+    }
+}
+.btn-primary {
+    color: #fff;
+    background-color: #1d809f;
+    border-color: #1d809f
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #196d87;
+    border-color: #17667f
+}
+.btn-xl {
+    padding: 1.25rem 2.5rem
+}
+.btn-l {
+    padding: 0.75rem 2.5rem
+}
