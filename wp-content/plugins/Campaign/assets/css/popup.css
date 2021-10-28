@@ -1,81 +1,59 @@
-.d-flex {
-    display: flex !important
-}
+
 
 .masthead {
-    min-height: 30rem;
-    align-content: space-evenly;
-    position: relative;
-    display: table;
     width: 100%;
-    height: auto;
     padding-top: 2rem;
-    padding-bottom: 8rem;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%);
-    background-position: center center;
-    background-repeat: no-repeat;
     background-size: cover;
+    position: fixed;
+    visibility: visible;
+    opacity: 1;
 }
 
-.masthead h1, .masthead .h1 {
-    font-size: 4rem;
-    margin: 0;
-    padding: 0
-}
+
 
 @media (min-width: 992px) {
     .masthead {
         height: 100vh
     }
-
-    .masthead h1, .masthead .h1 {
-        font-size: 5.5rem
-    }
 }
 @media (min-width: 768px) {
-    .d-md-flex {
-        display: flex !important
-    }
+
 }
 
-.container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
-    width: 100%;
-
-    padding-right: var(--bs-gutter-x, 0.75rem);
-    padding-left: var(--bs-gutter-x, 0.75rem);
+.container-sm {
+    width: 60%;
+    padding-left: 150px;
     margin-right: auto;
     margin-left: auto;
 
-    background-color: #FFFFFF;
-    opacity: 0.6;
 }
 
 @media (min-width: 576px) {
-    .container-sm, .container {
+    .container {
         max-width: 540px
     }
 }
 
 @media (min-width: 768px) {
-    .container-md, .container-sm, .container {
+    .container {
         max-width: 720px
     }
 }
 
 @media (min-width: 992px) {
-    .container-lg, .container-md, .container-sm, .container {
+    .container {
         max-width: 960px
     }
 }
 
 @media (min-width: 1200px) {
-    .container-xl, .container-lg, .container-md, .container-sm, .container {
+    .container {
         max-width: 1140px
     }
 }
 
 @media (min-width: 1400px) {
-    .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    .container {
         max-width: 1320px
     }
 }
@@ -89,31 +67,27 @@
 .text-color-black {
     color: #000000;
 }
-.text-style-mongo {
-    font-family: Mongolian Baliti;
+.text-color-white {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.text-style {
+    font-family: Times New Roman !important;
+    color: #FFFFFF;
+    font-weight: bold;
 }
 .disclaimer {
-    color: #000000;
-    margin-top: 5px;
+    text-align: center;
+    padding: 25px;
     font-size: 15px;
-    background-color: #FFFFFF;
-    opacity: 0.6;
-    bottom:10px;
-    width: 100%;
-    position: absolute;
     font-family: Times New Roman;
 }
-.img {
-    width: 175px;
-}
+
 .mb-5 {
     margin-bottom: 3rem !important
 }
 .mb-4 {
     margin-bottom: 1rem !important
-}
-.mb-1 {
-    margin-bottom: .25rem !important
 }
 .btn {
     display: inline-block;
@@ -139,11 +113,13 @@
     .btn {
         transition: none
     }
+
 }
-.btn-primary {
-    color: #fff;
-    background-color: #1d809f;
-    border-color: #1d809f
+.btn-pzbuk {
+    color: #FFFFFF;
+    background-color: #00a32a;
+    border-color: #1d809f;
+    font-weight: bold
 }
 
 .btn-primary:hover {
@@ -156,4 +132,58 @@
 }
 .btn-l {
     padding: 0.75rem 2.5rem
+}
+.my-description {
+    text-align: center;
+    padding: 25px 150px;
+}
+.my-img-header {
+    text-align: center;
+}
+.my-img-header h1 {
+    font-size: 55px;
+    padding-top: 25px;
+}
+.my-img-header img {
+    width: 250px;
+    align-self: center;
+}
+
+@media (max-width: 640px) {
+    .container {
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .masthead {
+        width: 100%;
+        padding-top: 1rem;
+        background-size: cover;
+        position: fixed;
+        visibility: visible;
+        opacity: 1;
+    }
+    .my-description {
+        text-align: center;
+        padding: 5px 10px;
+        margin-bottom: 15px;
+        margin-top: 15px;
+        background-color: #00a32a;
+    }
+    .my-img-header img {
+        width: 350px;
+        align-self: center;
+    }
+    .text-style {
+        font-family: Times New Roman !important;
+        color: #FFFFFF;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .disclaimer {
+        text-align: center;
+        padding: 25px;
+        font-size: 8px;
+        font-family: Times New Roman;
+    }
 }

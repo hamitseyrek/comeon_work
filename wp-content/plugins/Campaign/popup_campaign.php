@@ -45,18 +45,23 @@ function popup_campaign() {
 			$data  = json_decode( get_post_meta( $first_post->ID, 'lv', true ), true );
 			$image = $data['upload_image'];
 
-			return '<div class="d-flex masthead"
-     style="background-image:url(' . esc_attr( $image ) . ');height:100%;">
-    <div class="container  text-center" style="align-content: space-around;">
-        <img class="img mb-4" src=' . WP_PLUGIN_URL . "/Campaign/assets/image/pzbuk-log.png" . '>
-        <h1 class="mb-1 text-color-black text-style-mongo">' . esc_attr( $data['header'] ) . '</h1><p class="text-color-black" style="font-family: Comic Sans MS">' . esc_attr( $data['description'] ) . '</p>
-        <br>
-        <a class="btn btn-primary btn-l js-scroll-trigger" role="button" href="' . esc_attr( $data['button_link'] ) . '" style="margin-top: 0px; margin-bottom: 20px;">' . esc_attr( $data['button_text'] ) . '</a><br>
-    </div>        <p class="disclaimer text-center">' . esc_attr( $data['disclaimer'] ) . '<br></p>
-
-</div>';
+			return '
+			<div class="masthead" style="background-image:url(' . esc_attr( $image ) . ')">
+    			<div class="container text-style">
+    			<div class="my-img-header">
+        			<img src=' . WP_PLUGIN_URL . "/Campaign/assets/image/pzbuklogo.png" . '>
+        			<h1>' . esc_attr( $data['header'] ) . '</h1>
+        			<div class="my-description">
+        			' . esc_attr( $data['description'] ) . '
+        			</div>
+        			<a class="btn btn-pzbuk btn-l" role="button" href="' . esc_attr( $data['button_link'] ) . '">' . esc_attr( $data['button_text'] ) . '</a><br>
+    			<div class="disclaimer">
+        			' . esc_attr( $data['disclaimer'] ) . '
+        			</div>
+    			</div>   
+    			</div>     
+			</div>';
 		}
-
 	} else {
 		return '';
 	}
@@ -68,5 +73,3 @@ function popup_shortcode( $name ) {
 }
 
 add_action( 'wp_head', 'popup_shortcode' );
-
-
