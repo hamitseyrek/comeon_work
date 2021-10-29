@@ -51,11 +51,11 @@ function popup_campaign() {
     			<div class="my-img-header">
         			<img src=' . WP_PLUGIN_URL . "/Campaign/assets/image/pzbuklogo.png" . '>
         			<h1>' . esc_attr( $data['header'] ) . '</h1>
-        			<div class="my-description">
+<div class="my-description">
         			' . esc_attr( $data['description'] ) . '
         			</div>
-        			<a class="btn btn-pzbuk btn-l" role="button" href="' . esc_attr( $data['button_link'] ) . '">' . esc_attr( $data['button_text'] ) . '</a><br>
-    			<div class="disclaimer">
+<a class="btn btn-pzbuk" role="button" href="' . esc_attr( $data['button_link'] ) . '">' . esc_attr( $data['button_text'] ) . '</a><br>
+<div class="disclaimer">
         			' . esc_attr( $data['disclaimer'] ) . '
         			</div>
     			</div>   
