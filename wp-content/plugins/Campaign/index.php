@@ -9,24 +9,24 @@
  * Text Domain: campaign
  */
 
-// Hooking for custom page
+// Hooking for custom post
 add_action( 'init', 'campaign_custom_post' );
 function campaign_custom_post() {
 	register_post_type( 'campaign',
 		array(
 			'labels'       => array(
-				'name'                  => __( 'Campaigns', 'codem' ),
-				'singular_name'         => __( 'Campaign', 'codem' ),
-				'add_new'               => __( 'New Campaign', 'codem' ),
+				'name'                  => __( 'Campaigns'),
+				'singular_name'         => __( 'Campaign'),
+				'add_new'               => __( 'New Campaign'),
 				'add_new_item'          => __( 'Add New Campaign' ),
-				'name_admin_bar'        => __( 'Campaign', 'admin bar' ),
+				'name_admin_bar'        => __( 'Campaign'),
 				'edit_item'             => __( 'Edit Campaign' ),
 				'new_item'              => __( 'New Campaign' ),
 				'view_item'             => __( 'View Campaign' ),
 				'all_item'              => __( 'All Campaign' ),
 				'search_items'          => __( 'Search Campaign' ),
 				'not_found'             => __( 'No Campaigns Found' ),
-				'not_found_in_trash'    => __( 'No Campaigns found in Trash', 'codem' ),
+				'not_found_in_trash'    => __( 'No Campaigns found in Trash'),
 				'featured_image'        => __( 'Background Image' ),
 				'use_featured_image'    => __( 'Use background image' ),
 				'remove_featured_image' => __( 'Remove background image' ),
@@ -47,7 +47,8 @@ function campaign_custom_post() {
 	);
 }
 
-// for jquery library
+/*
+// for jquery library hmtsyrk
 add_action( 'get_header', 'hook_javascript' );
 function hook_javascript() {
 	?>
@@ -56,8 +57,9 @@ function hook_javascript() {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<?php
 }
+*/
 
-// for image upload
+// for background-image upload
 add_action( 'admin_enqueue_scripts', 'include_js' );
 function include_js() {
 	if ( ! did_action( 'wp_enqueue_media' ) ) {
@@ -79,13 +81,13 @@ function include_css_popup() {
 	wp_enqueue_style( 'uniquestylesheetid' );
 }
 
+//for Campaign Popup in website
+include 'popup_campaign.php';
 
 include 'include/field_for_lv.php';
 include 'include/field_for_mv.php';
 include 'include/field_for_hv.php';
-include 'custom_meta_box.php';
 include 'include/field_for_vip.php';
-include 'popup_campaign.php';
 
 
 

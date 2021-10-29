@@ -43,10 +43,6 @@ function getSegment() {
 	$response = wp_remote_post( $url, array(
 			'method'      => 'POST',
 			'timeout'     => 45,
-			'redirection' => 5,
-			'httpversion' => '1.0',
-			'blocking'    => true,
-			'headers'     => array(),
 			'body'        => array(
 				'email' => $email
 			),
@@ -56,11 +52,8 @@ function getSegment() {
 
 	if ( is_wp_error( $response ) ) {
 		//$error_message = $response->get_error_message();
-		//echo "Something went wrong: $error_message";
 		return '';
 	} else {
-		//print_r( json_decode( $response['body'] )->result->value );
-		//echo '</pre>';
 		return json_decode( $response['body'] )->result->value;
 	}
 }

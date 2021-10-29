@@ -16,20 +16,15 @@ function lv_segment_meta_box_callback( $post ) {
 
 	// Add a nonce field so we can check for it later.
 	wp_nonce_field( 'lv_segment_nonce', 'lv_segment_nonce' );
+	$postJsonDecode = json_decode( get_post_meta( $post->ID, 'lv', true ) );
 
-	$header       = json_decode( get_post_meta( $post->ID, 'lv', true ) )->header;
-	$description  = json_decode( get_post_meta( $post->ID, 'lv', true ) )->description;
-	$button_text  = json_decode( get_post_meta( $post->ID, 'lv', true ) )->button_text;
-	$button_link1 = json_decode( get_post_meta( $post->ID, 'lv', true ) )->button_link;
-	$disclaimer   = json_decode( get_post_meta( $post->ID, 'lv', true ) )->disclaimer;
-	$upload_image = json_decode( get_post_meta( $post->ID, 'lv', true ) )->upload_image;
 	echo '<div class="container">
     <div class="row">
       <div class="col-25">
         <label>' . __( 'Header' ) . '</label>
       </div>
       <div class="col-75">
-        <input type="text" name="header_lv" value="' . esc_attr( $header ) . '" >
+        <input type="text" name="header_lv" value="' . esc_attr( $postJsonDecode->header ) . '" >
       </div>
     </div>
     <div class="row">
@@ -37,7 +32,7 @@ function lv_segment_meta_box_callback( $post ) {
         <th><label>' . __( 'Description' ) . '</label></th>
       </div>
       <div class="col-75">
-        <textarea name="description_lv">' . esc_attr( $description ) . '</textarea>
+        <textarea name="description_lv">' . esc_attr( $postJsonDecode->description ) . '</textarea>
       </div>
     </div>
     <div class="row">
@@ -45,7 +40,7 @@ function lv_segment_meta_box_callback( $post ) {
         <th><label>' . __( 'Button Text' ) . '</label></th>
       </div>
       <div class="col-75">
-        <input type="text" name="button_text_lv" value="' . esc_attr( $button_text ) . '">
+        <input type="text" name="button_text_lv" value="' . esc_attr( $postJsonDecode->button_text ) . '">
       </div>
     </div>
     <div class="row">
@@ -53,7 +48,7 @@ function lv_segment_meta_box_callback( $post ) {
         <label>' . __( 'Button Link' ) . '</label>
       </div>
       <div class="col-75">
-         <input type="text" name="button_link" value="' . esc_attr( $button_link1 ) . '">
+         <input type="text" name="button_link" value="' . esc_attr( $postJsonDecode->button_link ) . '">
       </div>
     </div>
     <div class="row">
@@ -61,7 +56,7 @@ function lv_segment_meta_box_callback( $post ) {
         <label>' . __( 'Disclaimer' ) . '</label>
       </div>
       <div class="col-75">
-         <textarea name="disclaimer_lv">' . esc_attr( $disclaimer ) . '</textarea>
+         <textarea name="disclaimer_lv">' . esc_attr( $postJsonDecode->disclaimer ) . '</textarea>
       </div>
     </div>
     <div class="row">
@@ -69,9 +64,9 @@ function lv_segment_meta_box_callback( $post ) {
         <label>' . __( 'Background Image' ) . '</label>
       </div>
       <div class="col-75">';
-	if ( $upload_image != null ) {
-		echo '<input id="upload_image_lv" type="text" name="upload_image_lv" value="' . esc_attr( $upload_image ) . '"/>';
-		echo '<a href="#" class="hase-upl" data-segment="lv"><img width="150" src="' . $upload_image . '"  /></a>
+	if ( $postJsonDecode->upload_image != null ) {
+		echo '<input id="upload_image_lv" type="text" name="upload_image_lv" value="' . esc_attr( $postJsonDecode->upload_image ) . '"/>';
+		echo '<a href="#" class="hase-upl" data-segment="lv"><img width="150" src="' . $postJsonDecode->upload_image . '"  /></a>
 	      <a href="#" class="hase-rmv" data-segment="lv">Remove image</a>';
 	} else {
 		echo '<a href="#" class="hase-upl" data-segment="lv">Upload image</a>';
@@ -140,19 +135,3 @@ function save_lv_segment_meta_box_data( $post_id ) {
 }
 
 add_action( 'save_post', 'save_lv_segment_meta_box_data' );
-
-function lv_segment_before_post( $content ) {
-
-	global $post;
-
-	// retrieve the global notice for the current post
-	$data = esc_attr( get_post_meta( $post->ID, 'lv', true ) );
-
-	$notice = "<div class='sp_button'>$data</div>";
-
-	return $notice . $content;
-
-}
-
-add_filter( 'the_content', 'lv_segment_before_post' );
-?>
