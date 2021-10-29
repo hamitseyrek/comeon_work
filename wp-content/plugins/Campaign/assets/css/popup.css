@@ -127,6 +127,7 @@
     }
 
     .masthead {
+        padding-top: 25%;
         bottom: 0px;
         top: 0px;
     }
@@ -138,6 +139,10 @@
     }
 
     .my-img-header img {
+    }
+
+    .my-img-header h1 {
+        padding-top: 5%;
     }
 
     .text-style {
