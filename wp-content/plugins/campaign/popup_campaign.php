@@ -17,7 +17,7 @@ function popup_campaign() {
 			<div class="masthead" style="background-image:url(' . esc_attr( $data['upload_image'] ) . ')">
     			<div class="container text-style">
     				<div class="my-img-header">
-        				<img src=' . WP_PLUGIN_URL . "/Campaign/assets/image/pzbuklogo.png" . '>
+        				<img src=' . WP_PLUGIN_URL . "/campaign/assets/image/pzbuklogo.png" . '>
         				<h1>' . esc_attr( $data['header'] ) . '</h1>
 						<div class="my-description">' . esc_attr( $data['description'] ) . '
         				</div>
@@ -34,7 +34,7 @@ function popup_campaign() {
 			<div class="masthead" style="background-image:url(' . esc_attr( $data['upload_image'] ) . ')">
     			<div class="container text-style">
     				<div class="my-img-header">
-        				<img src=' . WP_PLUGIN_URL . "/Campaign/assets/image/pzbuklogo.png" . '>
+        				<img src=' . WP_PLUGIN_URL . "/campaign/assets/image/pzbuklogo.png" . '>
         				<h1>' . esc_attr( $data['header'] ) . '</h1>
 						<div class="my-description">' . esc_attr( $data['description'] ) . '
         				</div>
@@ -51,7 +51,7 @@ function popup_campaign() {
 			<div class="masthead" style="background-image:url(' . esc_attr( $data['upload_image'] ) . ')">
     			<div class="container text-style">
     				<div class="my-img-header">
-        				<img src=' . WP_PLUGIN_URL . "/Campaign/assets/image/pzbuklogo.png" . '>
+        				<img src=' . WP_PLUGIN_URL . "/campaign/assets/image/pzbuklogo.png" . '>
         				<h1>' . esc_attr( $data['header'] ) . '</h1>
 						<div class="my-description">' . esc_attr( $data['description'] ) . '
         				</div>
@@ -68,7 +68,7 @@ function popup_campaign() {
 			<div class="masthead" style="background-image:url(' . esc_attr( $data['upload_image'] ) . ')">
     			<div class="container text-style">
     				<div class="my-img-header">
-        				<img src=' . WP_PLUGIN_URL . "/Campaign/assets/image/pzbuklogo.png" . '>
+        				<img src=' . WP_PLUGIN_URL . "/campaign/assets/image/pzbuklogo.png" . '>
         				<h1>' . esc_attr( $data['header'] ) . '</h1>
 						<div class="my-description">' . esc_attr( $data['description'] ) . '
         				</div>
@@ -86,7 +86,7 @@ function popup_campaign() {
 			<div class="masthead" style="background-image:url(' . esc_attr( $image ) . ')">
     			<div class="container text-style">
     				<div class="my-img-header">
-        				<img src=' . WP_PLUGIN_URL . "/Campaign/assets/image/pzbuklogo.png" . '>
+        				<img src=' . WP_PLUGIN_URL . "/campaign/assets/image/pzbuklogo.png" . '>
         				<h1>WELCOME</h1>
 						<div class="my-description">If you want to see our offers, you can log in with the button below.
         				</div>
