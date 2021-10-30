@@ -9,66 +9,15 @@ function popup_campaign() {
 
 	if ( $the_query->have_posts() ) {
 		$segment = getSegment();
-		if ( getSegment() == 'VIP' ) {
-			$data  = json_decode( get_post_meta( $first_post->ID, 'vip', true ), true );
-			$image = $data['upload_image'];
+		if ( wp_get_current_user()->exists() ) {
+			if ( getSegment() == 'VIP' ) {
+				$data = json_decode( get_post_meta( $first_post->ID, 'vip', true ), true );
 
-			return '
+				return '
 			<div class="masthead" style="background-image:url(' . esc_attr( $data['upload_image'] ) . ')">
     			<div class="container text-style">
     				<div class="my-img-header">
-        				<img src=' . WP_PLUGIN_URL . "/campaign/assets/image/pzbuklogo.png" . '>
-        				<h1>' . esc_attr( $data['header'] ) . '</h1>
-						<div class="my-description">' . esc_attr( $data['description'] ) . '
-        				</div>
-						<a class="btn btn-pzbuk" role="button" href="' . esc_attr( $data['button_link'] ) . '">' . esc_attr( $data['button_text'] ) . '</a><br>
-						<div class="disclaimer">' . esc_attr( $data['disclaimer'] ) . '
-        				</div>
-    				</div>   
-    			</div>     
-			</div>';		} else if ( getSegment() == 'HV' ) {
-			$data  = json_decode( get_post_meta( $first_post->ID, "hv", true ), true );
-			$image = $data['upload_image'];
-
-			return '
-			<div class="masthead" style="background-image:url(' . esc_attr( $data['upload_image'] ) . ')">
-    			<div class="container text-style">
-    				<div class="my-img-header">
-        				<img src=' . WP_PLUGIN_URL . "/campaign/assets/image/pzbuklogo.png" . '>
-        				<h1>' . esc_attr( $data['header'] ) . '</h1>
-						<div class="my-description">' . esc_attr( $data['description'] ) . '
-        				</div>
-						<a class="btn btn-pzbuk" role="button" href="' . esc_attr( $data['button_link'] ) . '">' . esc_attr( $data['button_text'] ) . '</a><br>
-						<div class="disclaimer">' . esc_attr( $data['disclaimer'] ) . '
-        				</div>
-    				</div>   
-    			</div>     
-			</div>';		} else if ( getSegment() == 'MV' ) {
-			$data  = json_decode( get_post_meta( $first_post->ID, "mv", true ), true );
-			$image = $data['upload_image'];
-
-			return '
-			<div class="masthead" style="background-image:url(' . esc_attr( $data['upload_image'] ) . ')">
-    			<div class="container text-style">
-    				<div class="my-img-header">
-        				<img src=' . WP_PLUGIN_URL . "/campaign/assets/image/pzbuklogo.png" . '>
-        				<h1>' . esc_attr( $data['header'] ) . '</h1>
-						<div class="my-description">' . esc_attr( $data['description'] ) . '
-        				</div>
-						<a class="btn btn-pzbuk" role="button" href="' . esc_attr( $data['button_link'] ) . '">' . esc_attr( $data['button_text'] ) . '</a><br>
-						<div class="disclaimer">' . esc_attr( $data['disclaimer'] ) . '
-        				</div>
-    				</div>   
-    			</div>     
-			</div>';		} else if ( getSegment() == 'LV' ) {
-			$data  = json_decode( get_post_meta( $first_post->ID, 'lv', true ), true );
-			$image = $data['upload_image'];
-
-			return '
-			<div class="masthead" style="background-image:url(' . esc_attr( $data['upload_image'] ) . ')">
-    			<div class="container text-style">
-    				<div class="my-img-header">
-        				<img src=' . WP_PLUGIN_URL . "/campaign/assets/image/pzbuklogo.png" . '>
+        				<img src=' . WP_PLUGIN_URL . "/hs_campaign/assets/image/pzbuklogo.png" . '>
         				<h1>' . esc_attr( $data['header'] ) . '</h1>
 						<div class="my-description">' . esc_attr( $data['description'] ) . '
         				</div>
@@ -78,15 +27,79 @@ function popup_campaign() {
     				</div>   
     			</div>     
 			</div>';
-		} else {
-			$data  = json_decode( get_post_meta( $first_post->ID, 'lv', true ), true );
-			$image = $data['upload_image'];
+			} else if ( getSegment() == 'HV' ) {
+				$data = json_decode( get_post_meta( $first_post->ID, "hv", true ), true );
 
-			return '
-			<div class="masthead" style="background-image:url(' . esc_attr( $image ) . ')">
+				return '
+			<div class="masthead" style="background-image:url(' . esc_attr( $data['upload_image'] ) . ')">
     			<div class="container text-style">
     				<div class="my-img-header">
-        				<img src=' . WP_PLUGIN_URL . "/campaign/assets/image/pzbuklogo.png" . '>
+        				<img src=' . WP_PLUGIN_URL . "/hs_campaign/assets/image/pzbuklogo.png" . '>
+        				<h1>' . esc_attr( $data['header'] ) . '</h1>
+						<div class="my-description">' . esc_attr( $data['description'] ) . '
+        				</div>
+						<a class="btn btn-pzbuk" role="button" href="' . esc_attr( $data['button_link'] ) . '">' . esc_attr( $data['button_text'] ) . '</a><br>
+						<div class="disclaimer">' . esc_attr( $data['disclaimer'] ) . '
+        				</div>
+    				</div>   
+    			</div>     
+			</div>';
+			} else if ( getSegment() == 'MV' ) {
+				$data = json_decode( get_post_meta( $first_post->ID, "mv", true ), true );
+
+				return '
+			<div class="masthead" style="background-image:url(' . esc_attr( $data['upload_image'] ) . ')">
+    			<div class="container text-style">
+    				<div class="my-img-header">
+        				<img src=' . WP_PLUGIN_URL . "/hs_campaign/assets/image/pzbuklogo.png" . '>
+        				<h1>' . esc_attr( $data['header'] ) . '</h1>
+						<div class="my-description">' . esc_attr( $data['description'] ) . '
+        				</div>
+						<a class="btn btn-pzbuk" role="button" href="' . esc_attr( $data['button_link'] ) . '">' . esc_attr( $data['button_text'] ) . '</a><br>
+						<div class="disclaimer">' . esc_attr( $data['disclaimer'] ) . '
+        				</div>
+    				</div>   
+    			</div>     
+			</div>';
+			} else if ( getSegment() == 'LV' ) {
+				$data = json_decode( get_post_meta( $first_post->ID, 'lv', true ), true );
+
+				return '
+			<div class="masthead" style="background-image:url(' . esc_attr( $data['upload_image'] ) . ')">
+    			<div class="container text-style">
+    				<div class="my-img-header">
+        				<img src=' . WP_PLUGIN_URL . "/hs_campaign/assets/image/pzbuklogo.png" . '>
+        				<h1>' . esc_attr( $data['header'] ) . '</h1>
+						<div class="my-description">' . esc_attr( $data['description'] ) . '
+        				</div>
+						<a class="btn btn-pzbuk" role="button" href="' . esc_attr( $data['button_link'] ) . '">' . esc_attr( $data['button_text'] ) . '</a><br>
+						<div class="disclaimer">' . esc_attr( $data['disclaimer'] ) . '
+        				</div>
+    				</div>   
+    			</div>     
+			</div>';
+			} else {
+
+				return '
+			<div class="masthead">
+    			<div class="container text-style">
+    				<div class="my-img-header">
+        				<img src=' . WP_PLUGIN_URL . "/hs_campaign/assets/image/pzbuklogo.png" . '>
+        				<div style="height: 35px"></div>
+        				<h1>WELCOME</h1>
+						<div class="my-description">"We do not any segmentation value about you".
+        				</div>
+    				</div>   
+    			</div>     
+			</div>';
+			}
+		} else {
+
+			return '
+			<div class="masthead">
+    			<div class="container text-style">
+    				<div class="my-img-header">
+        				<img src=' . WP_PLUGIN_URL . "/hs_campaign/assets/image/pzbuklogo.png" . '>
         				<h1>WELCOME</h1>
 						<div class="my-description">If you want to see our offers, you can log in with the button below.
         				</div>
